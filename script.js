@@ -12,5 +12,29 @@ next.addEventListener('click', () => {
         currentActive = circles.length
     }
 
-    console.log(currentActive)
+    
 })
+
+prev.addEventListener('click', () => {
+    currentActive--
+
+    if(currentActive < 1) {
+        currentActive = 1
+    }
+
+    update()
+})
+
+function update() {
+    circles.forEach((circle, idx) => {
+        if(idx < currentActive) {
+            circle.classList.add('active')
+        } else {
+            circle.classList.remove('active')
+        }
+    })
+
+    const actives = document.querySelectorAll('.active')
+
+    console.log((actives.length / circles.length) * 100)
+}
